@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("FlightService")
+@Service
 public class FlightsServiceImpl implements FlightsService {
 
     @Autowired
@@ -18,6 +18,7 @@ public class FlightsServiceImpl implements FlightsService {
     public List<Flight> getAll() {
         return flightsRepository.findAll();
     }
+
 
     @Override
     public Flight getById(Long id) throws Exception {

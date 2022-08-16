@@ -1,6 +1,7 @@
 package org.j4g.jpaspecifications.service;
 
 import org.j4g.jpaspecifications.model.db.Flight;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
