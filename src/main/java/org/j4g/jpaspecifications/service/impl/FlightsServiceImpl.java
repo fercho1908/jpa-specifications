@@ -15,7 +15,16 @@ public class FlightsServiceImpl implements FlightsService {
     FlightsRepository flightsRepository;
 
     @Override
-    public List<Flight> getAll() {
+    public List<Flight> getAll(String status, String flighNo) {
+
+        if(status != null && flighNo != null){
+            return flightsRepository.findByStatusAndFlightNumber(status, flighNo);
+        }else if(status == null && flighNo != null){
+            return  flightsRepository.findByFlightNumber(flighNo);
+        }
+        else if(status != null && flighNo == null){
+            return  flightsRepository.findByStatus(status);
+        }
         return flightsRepository.findAll();
     }
 

@@ -4,10 +4,7 @@ import org.j4g.jpaspecifications.model.db.Flight;
 import org.j4g.jpaspecifications.service.FlightsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +16,9 @@ public class FlightsController {
     private FlightsService flightsService;
 
     @GetMapping
-    public List<Flight> getFlights() {
-        return flightsService.getAll();
+    public List<Flight> getFlights(@RequestParam(required = false) String status,
+                                   @RequestParam(required = false) String flightNo) {
+        return flightsService.getAll(status, flightNo);
     }
 
     @GetMapping("/{id}")
